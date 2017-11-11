@@ -1,0 +1,51 @@
+//create by weatherfish 01174599 优化上传maven库依赖模块
+//全局扩展参数
+ext {
+    //默认参数配置
+    config = [GROUP             : "com.felix.test",
+              NEXUS_RELEASES    : "http://localhost:8181/repository/maven-releases/",//#发布releases版的地址
+              NEXUS_SNAPSHOTS   : "http://localhost:8181/repository/maven-snapshot/",//#发布snapshots版的地址
+              POM_PACKAGING     : "aar",
+              NEXUS_USERNAME    : "admin",
+              NEXUS_PASSWORD    : "admin123",
+              POM_DEVELOPER_ID  : "weatherfish",
+              POM_DEVELOPER_NAME: "weatherfish"
+    ]
+
+    allprojects {
+        repositories {
+            maven { url config.NEXUS_RELEASES }
+            maven { url config.NEXUS_SNAPSHOTS }
+        }
+    }
+
+    //Android编译版本管理
+    android = [compileSdkVersion: 26,
+               buildToolsVersion: "26.0.2",
+               minSdkVersion    : 17,
+               targetSdkVersion : 26]
+
+    libsversion = [
+            // andlib 按打包优先级排序
+            testlibrary1: "1.0.1",//SendExpress/sendex,派件
+            testlibrary2: "1.0.2",//Courier/courier,收派列表市场等相关
+            testlibrary3: "1.0.3",//WeChat/weChat,微信
+    ]
+
+    libsname = [
+            testlibrary1: "testlibrary1",
+            testlibrary2: "testlibrary2",
+            testlibrary3: "testlibrary3",
+    ]
+
+    dependencies = [
+            "testlibrary1": "${config.GROUP}:${libsname.testlibrary1}:${libsversion.testlibrary1}",
+            "testlibrary2": "${config.GROUP}:${libsname.testlibrary2}:${libsversion.testlibrary2}",
+            "testlibrary3": "${config.GROUP}:${libsname.testlibrary3}:${libsversion.testlibrary3}",
+    ]
+}
+
+//打印当前申明的library的版本号，编译操作者检查,根据此日志在提交的时候要核对版本正确性
+ext.libsversion.each {  //调用它的each函数，只要传入一个Closure就可以了。
+    println "###当前版本: ${it}"
+}

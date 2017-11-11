@@ -1,0 +1,70 @@
+task A {
+    println "hello A"
+    doLast {
+        println "doLast hello A"
+    }
+}
+
+task B {
+    println "hello B"
+    doLast {
+        println "doLast hello B"
+    }
+}
+
+task C {
+    println "hello C"
+    doLast {
+        println "doLast hello C"
+    }
+}
+
+B.dependsOn A
+C.dependsOn B
+
+task D {
+    println "hello D"
+    doLast {
+        println "doLast hello D"
+    }
+}
+
+task E {
+    println "hello E"
+    doLast {
+        println "doLast hello E"
+    }
+}
+
+task F {
+    println "hello FF"
+    doLast {
+        println "doLast hello F"
+    }
+}
+
+D.dependsOn B
+C.dependsOn D
+C.dependsOn E
+
+D.mustRunAfter E
+C.finalizedBy F
+
+tasks.whenTaskAdded { task ->
+    if (task.name.contains('AndroidTest')) {
+        task.enabled = false
+    }
+}
+
+afterEvaluate {
+    android.applicationVariants.each { variant ->
+        def dx = tasks.findByName("assemble${variant.name.capitalize()}")
+        def hello = "hello${variant.name.capitalize()}"
+        task(hello).doLast {
+            println "hello-->" + hello
+        }
+        tasks.findByName(hello).dependsOn dx.taskDependencies.getDependencies(dx)
+        dx.dependsOn tasks.findByName(hello)
+    }
+}
+

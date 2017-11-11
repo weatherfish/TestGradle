@@ -1,0 +1,39 @@
+//create by weatherfish 01174599 优化上传maven库上传模块
+
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+def getReleaseRepositoryUrl() {
+    return rootProject.ext.config.NEXUS_RELEASES
+}
+
+def getSnapshotRepositoryUrl() {
+    return rootProject.ext.config.NEXUS_SNAPSHOTS
+}
+//afterEvaluate { project ->
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.groupId = rootProject.ext.config.GROUP
+            pom.artifactId = rootProject.ext.libsname["${project.modulename}"]
+            pom.version = rootProject.ext.libsversion["${project.modulename}"]
+
+            repository(url: getReleaseRepositoryUrl()) {
+                authentication(userName: rootProject.ext.config.NEXUS_USERNAME, password: rootProject.ext.config.NEXUS_PASSWORD)
+            }
+            snapshotRepository(url: getSnapshotRepositoryUrl()) {
+                authentication(userName: rootProject.ext.config.NEXUS_USERNAME, password: rootProject.ext.config.NEXUS_PASSWORD)
+            }
+            pom.project {
+                name project.ext.modulename
+                packaging rootProject.ext.config.POM_PACKAGING
+                developers {
+                    developer {
+                        id rootProject.ext.config.POM_DEVELOPER_ID
+                        name rootProject.ext.config.POM_DEVELOPER_NAME
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+dependencies {
+    compile localGroovy()
+    compile gradleApi()
+    compile "com.android.tools.build:gradle:3.0.0"
+    compile 'org.javassist:javassist:3.20.0-GA'
+}
+
+group = 'com.felix.gradle.plugin'
+version = '1.0.0'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repo'))
+
+//            repository(url: RELEASE_REPOSITORY_URL) {
+//                authentication(userName: USERNAME, password: PASSWORD)
+//            }
+        }
+    }
+}

@@ -1,0 +1,1 @@
+include ':app', ':gplugin', ':testlibrary1', ':testlibrary2', ':testlibrary3'

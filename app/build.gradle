@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'weatherfish'
+apply from: '../task.gradle'
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        applicationId "com.felix.gradle.test"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+//    }
+}
+
+config {
+    message = "from app "
+    sender = "this is app"
+    inConfig {
+        inMessage = "from app inner"
+        inSender = "this is app inner"
+    }
+    inConfig2 {
+        myClosure = { v ->
+            println "inConfig2 app ###" + v
+            return v
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    implementation rootProject.ext.dependencies["testlibrary1"]
+    implementation rootProject.ext.dependencies["testlibrary2"]
+    implementation rootProject.ext.dependencies["testlibrary3"]
+}
