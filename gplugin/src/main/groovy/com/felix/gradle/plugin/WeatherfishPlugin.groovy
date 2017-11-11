@@ -55,6 +55,7 @@ class WeatherfishPlugin implements Plugin<Project> {
         }
         if (project.plugins.hasPlugin(JavaPlugin)) {
 
+
         }
         if (project.plugins.hasPlugin(GroovyPlugin)) {
 
