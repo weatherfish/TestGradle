@@ -3,11 +3,15 @@
 ext {
     //默认参数配置
     config = [GROUP             : "com.felix.test",
-              NEXUS_RELEASES    : "http://localhost:8181/repository/maven-releases/",//#发布releases版的地址
-              NEXUS_SNAPSHOTS   : "http://localhost:8181/repository/maven-snapshot/",//#发布snapshots版的地址
+//              NEXUS_RELEASES    : "http://localhost:8181/repository/maven-releases/",//#发布releases版的地址
+//              NEXUS_SNAPSHOTS   : "http://localhost:8181/repository/maven-snapshot/",//#发布snapshots版的地址
+              NEXUS_RELEASES    : "http://nexus.sf-express.com/nexus/content/repositories/releases/",//#发布releases版的地址
+              NEXUS_SNAPSHOTS   : "http://nexus.sf-express.com/nexus/content/repositories/snapshots/",//#发布snapshots版的地址
               POM_PACKAGING     : "aar",
-              NEXUS_USERNAME    : "admin",
-              NEXUS_PASSWORD    : "admin123",
+//              NEXUS_USERNAME    : "admin",
+//              NEXUS_PASSWORD    : "admin123",
+              NEXUS_USERNAME    : "deploy",
+              NEXUS_PASSWORD    : "deploy123",
               POM_DEVELOPER_ID  : "weatherfish",
               POM_DEVELOPER_NAME: "weatherfish"
     ]

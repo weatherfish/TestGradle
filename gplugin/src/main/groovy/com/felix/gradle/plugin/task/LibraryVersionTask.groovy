@@ -7,6 +7,10 @@ class LibraryVersionTask extends DefaultTask {
 
     @TaskAction
     void versionAdd() {
-
+        int version = project.version
+        version = version + 1
+        ant.propertyfile(file: versionFile){
+            entry(key:'')
+        }
     }
 }
