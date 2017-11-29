@@ -11,3 +11,4 @@ build.gradle
 libs/
 proguard-rules.pro
 src/main/res/drawable/
+repo/com/felix/gradle/plugin/gplugin
