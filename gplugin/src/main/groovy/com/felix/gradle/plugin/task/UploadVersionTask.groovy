@@ -9,6 +9,9 @@ class UploadVersionTask extends DefaultTask {
     void addVersion() {
         def config = project.extensions.getByName(AppConstant.USER_CONFIG)
         def versionPath = config.versionPropertiesPath
-        ant.
+        def versionFile = File(versionPath)
+        versionFile.eachLine("UTF-8") {
+            println it
+        }
     }
 }
