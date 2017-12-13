@@ -2,5 +2,5 @@ package com.felix.gradle.plugin
 
 
 class ConfigExtension{
-    def versionPropertiesPath = "version.properties"
+    String versionPropertiesPath = "version.properties"
 }
