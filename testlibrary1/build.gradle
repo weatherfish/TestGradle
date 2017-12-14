@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'version'
+//apply plugin: 'version'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -17,9 +17,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 
-config{
-    versionPropertiesPath = '../version.properties'
-}
+//config{
+//    versionPropertiesPath = '../version.properties'
+//}
 
 ext {
     modulename = rootProject.ext.libsname.testlibrary1

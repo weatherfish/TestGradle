@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'weatherfish'
+//apply plugin: 'weatherfish'
 //apply from: '../task.gradle'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -14,21 +14,21 @@ android {
     }
 }
 
-config {
-    message = "from app "
-    sender = "this is app"
-    inConfig {
-        inMessage = "from app inner"
-        inSender = "this is app inner"
-    }
-    inConfig2 {
-        myClosure = { v ->
-            println "inConfig2 app ###" + v
-            return v
-        }
-    }
-
-}
+//config {
+//    message = "from app "
+//    sender = "this is app"
+//    inConfig {
+//        inMessage = "from app inner"
+//        inSender = "this is app inner"
+//    }
+//    inConfig2 {
+//        myClosure = { v ->
+//            println "inConfig2 app ###" + v
+//            return v
+//        }
+//    }
+//
+//}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

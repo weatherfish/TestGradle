@@ -3,6 +3,7 @@
 ext {
     //默认参数配置
     config = [GROUP             : "com.felix.test",
+//              config = [GROUP             : "com.andlibrary.gradle.plugin",
 //              NEXUS_RELEASES    : "http://localhost:8181/repository/maven-releases/",//#发布releases版的地址
 //              NEXUS_SNAPSHOTS   : "http://localhost:8181/repository/maven-snapshot/",//#发布snapshots版的地址
               NEXUS_RELEASES    : "http://nexus.sf-express.com/nexus/content/repositories/releases/",//#发布releases版的地址
