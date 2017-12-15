@@ -33,6 +33,8 @@ class UploadVersionTask extends DefaultTask {
                         if (!added && tmp < 99) {
                             tmp = tmp + 1
                             added = true
+                        } else if (tmp == 99) {
+                            tmp = 0
                         }
                         tmpVersion = tmp + "." + tmpVersion
                     }

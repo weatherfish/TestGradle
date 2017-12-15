@@ -17,11 +17,11 @@ version = '1.0.2'
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: uri('../repo'))
+//            repository(url: uri('../repo'))
 
-//            repository(url: rootProject.ext.config.NEXUS_RELEASES) {
-//                authentication(userName: rootProject.ext.config.NEXUS_USERNAME, password: rootProject.ext.config.NEXUS_PASSWORD)
-//            }
+            repository(url: rootProject.ext.config.NEXUS_RELEASES) {
+                authentication(userName: rootProject.ext.config.NEXUS_USERNAME, password: rootProject.ext.config.NEXUS_PASSWORD)
+            }
         }
     }
 }
